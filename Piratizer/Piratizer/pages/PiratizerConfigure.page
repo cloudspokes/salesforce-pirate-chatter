@@ -1,0 +1,30 @@
+<apex:page controller="PiratizerConfigureCon" docType="html-5.0">
+	<apex:sectionHeader title="Piratizer Configuration"/>
+	<head>
+       <meta charset="utf-8" />
+        <title>Configure Piratizer</title>
+    </head>
+    <header><!-- header -->
+		<img src="{!URLFOR($Resource.Pirates,'Pirates/pirate1.jpeg')}" width="940" height="200" alt=""/><!-- header image -->
+	</header><!-- end of header -->
+	<apex:form id="theform">
+		<apex:pageBlock id="theBlock">
+			<apex:pageMessages id="theMessages"/>
+			<apex:pageBlockButtons id="theButtons">
+				<apex:commandButton value="Enable Piratizer" action="{!enableConfig}" rerender="theMessages" disabled="{!configAlreadySet}"/>
+				<apex:commandButton value="Load Dictionary from Yahoo " action="{!loadfromYahoo}" rerender="theBlock" rendered="{!NOT(isLoaded)}"/>	
+				<apex:commandButton value="Save" action="{!savedictionary}" rendered="{!isLoaded}"/>
+			</apex:pageBlockButtons>
+			<apex:pageblockTable value="{!dictionary}" var="d" id="theTable" rendered="{!isLoaded}">
+				<apex:column >
+					<apex:facet name="header">English</apex:facet>
+					<apex:outputField value="{!d.English_Version__c}"/>
+				</apex:column>
+					<apex:column >
+					<apex:facet name="header">Piratized</apex:facet>			
+					<apex:outputField value="{!d.Piratized_Version__c}"/>
+				</apex:column>			
+			</apex:pageblockTable>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

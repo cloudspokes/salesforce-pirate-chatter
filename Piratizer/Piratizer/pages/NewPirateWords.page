@@ -1,0 +1,29 @@
+<apex:page standardController="Pirate_Dictionary__c" extensions="NewPirateWordsExt" docType="html-5.0">
+	<apex:sectionHeader title="Add Pirate Words to Dictionary"/>
+	<head>
+       <meta charset="utf-8" />
+        <title>Pirate Dictionary</title>
+    </head>
+    <header><!-- header -->
+		<img src="{!URLFOR($Resource.Pirates,'Pirates/pirate2.jpeg')}" width="940" height="200" alt=""/><!-- header image -->
+	</header><!-- end of header -->
+	<apex:form >
+		<apex:pageMessages id="theMessages"/>
+		<apex:pageBlock id="dicBlock">
+			<apex:pageBlockButtons id="theButtons" location="top">
+				<apex:commandButton value="Save" action="{!save}"/>
+				<apex:commandButton value="Cancel" action="{!cancel}"/>	
+			</apex:pageBlockButtons>
+			<apex:pageBlockTable value="{!dictionaryWords}" var="d">
+				<apex:column >
+					<apex:facet name="header">English</apex:facet>
+					<apex:inputField value="{!d.English_Version__c}"/>
+				</apex:column>
+					<apex:column >
+					<apex:facet name="header">Piratized</apex:facet>			
+					<apex:inputField value="{!d.Piratized_Version__c}"/>
+				</apex:column>			
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

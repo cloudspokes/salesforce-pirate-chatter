@@ -1,0 +1,18 @@
+<project name="ant tasks" default="deploy" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+    <!-- Shows deploying code & running tests for code in directory -->
+    <target name="deploy">
+      <!-- Upload the contents of the "retrieveMetadata" directory -->
+      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="Piratizer"/>
+    </target>
+
+    <!-- Removing metadata -->
+    <target name="remove">
+      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="Piratizer"/>
+    </target>
+
+
+</project>
